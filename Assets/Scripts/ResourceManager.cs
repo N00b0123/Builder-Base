@@ -23,22 +23,12 @@ public class ResourceManager : MonoBehaviour
             resourceAmountDictionary[resourceType] = 0;
         }
 
-        TestLogResourceAmmountDictionary();
-    }
-
-    void TestLogResourceAmmountDictionary()
-    {
-        foreach (ResourceTypeSO resourceType in resourceAmountDictionary.Keys)
-        {
-            Debug.Log(resourceType.nameString + ": " + resourceAmountDictionary[resourceType]);
-        }
     }
 
     public void AddResource(ResourceTypeSO resourceType, int amount)
     {
         resourceAmountDictionary[resourceType] += amount;
         OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
-        TestLogResourceAmmountDictionary();
     }
 
     public int GetResourceAmount(ResourceTypeSO resourceType)
