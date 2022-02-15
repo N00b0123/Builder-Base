@@ -6,10 +6,10 @@ using TMPro;
 
 public class ResourcesUI : MonoBehaviour
 {
-    ResourceTypeListSO resourceTypeList;
-    Dictionary<ResourceTypeSO, Transform> resourceTypeTransformDictionary;
+    private ResourceTypeListSO resourceTypeList;
+    private Dictionary<ResourceTypeSO, Transform> resourceTypeTransformDictionary;
 
-    void Awake()
+    private void Awake()
     {
         resourceTypeList = Resources.Load<ResourceTypeListSO>(typeof(ResourceTypeListSO).Name);
 
@@ -34,7 +34,7 @@ public class ResourcesUI : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         ResourceManager.Instance.OnResourceAmountChanged += ResourceManager_OnResourceAmountChanged;
         UpdateResourceAmount();
@@ -45,7 +45,7 @@ public class ResourcesUI : MonoBehaviour
         UpdateResourceAmount();
     }
 
-    void UpdateResourceAmount()
+    private void UpdateResourceAmount()
     {
         foreach (ResourceTypeSO resourceType in resourceTypeList.list)
         {

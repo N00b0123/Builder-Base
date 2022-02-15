@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b956311e456cb7448c269c2f461d20a, type: 3}
-  m_Name: StoneCamp
+  m_Name: GoldCamp
   m_EditorClassIdentifier: 
-  nameString: Stone Camp
-  prefab: {fileID: 5750384353099900203, guid: 6fa9b26c43e499b4f8ee477fd1a36a36, type: 3}
+  nameString: Gold Camp
+  prefab: {fileID: 5750384353099900203, guid: e61ac37f15a319e46a8c93e94d5548c8, type: 3}
   resourceGeneratorData:
     timerMax: 2
-    resourceType: {fileID: 11400000, guid: 7130687bb74200a4d8afbb96b0bfce8c, type: 2}
-  sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
+    resourceType: {fileID: 11400000, guid: 34f70eb10b3d0bc408a0d5abf9f77548, type: 2}
+  sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}

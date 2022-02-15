@@ -1,48 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
-    BuildingTypeSO buildingType;
-    BuildingTypeListSO buildingTypeList;
+    public static BuildingManager Instance { get; private set; }
 
-    Camera mainCamera;
+    private BuildingTypeSO activeBuildingType;
+    private BuildingTypeListSO buildingTypeList;
+    private Camera mainCamera;
 
     private void Awake()
     {
+        Instance = this;
+
         buildingTypeList = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
-        buildingType = buildingTypeList.list[0];
     }
 
-    void Start()
+    private void Start()
     {
         mainCamera = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Instantiate(buildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
+            if(activeBuildingType != null)
+            {
+                Instantiate(activeBuildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            buildingType = buildingTypeList.list[0];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            buildingType = buildingTypeList.list[1];
-        }
-
     }
 
-    Vector3 GetMouseWorldPosition()
+    private Vector3 GetMouseWorldPosition()
     {
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
         return mouseWorldPosition;
+    }
+
+    public void SetActiveBuildingType(BuildingTypeSO buildingType)
+    {
+        activeBuildingType = buildingType;
+    }
+
+    public BuildingTypeSO GetActiveBuildingType()
+    {
+        return activeBuildingType;
     }
 }
